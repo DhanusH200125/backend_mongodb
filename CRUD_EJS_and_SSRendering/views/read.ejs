@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+    <link rel = "stylesheet" href = "/stylesheets/style.css">
+
+</head>
+<body>
+
+   <div class ="min-h-screen w-full bg-zinc-900 p-10 text-white">
+    <a class="text-blue-400 mb-10" href="/">Back to Create User</a>
+    <h1 class="text-3xl tracking-tighter mt-5 "> Read Users Page</h1>
+    <div class="users flex gap-4 flex-wrap ">
+        <% if(users.length == 0){ %>
+            <h1 class="text-2xl text-zinc-500 mt-5">No users found. Please create some users.</h1>
+        <% } else { %>
+            <% users.forEach((user)=>{ %>
+                <div class="user max-w-72 p-4 bg-zinc-800 rounded-lg">
+                    <div class="w-full h-52 rounded-lg "> 
+                        <img class="w-full h-full object-cover rounded-lg overflow-hidden" src = "<%= user.imageUrl %>" alt = "user image">
+                    </div>
+                    <h3 class="text-xl mt-3 tracking-tighter"><%= user.username %></h3>
+                    <h5 class="text-zinc-500"><%= user.email %></h5>
+                    <div class="flex flex-direction-column justify-content-center align-items-center gap-3 mt-6"> 
+                        <a class="text-zinc-500 hover:text-blue-500" href = "/edit/<%= user._id %>">Edit User</a>
+                        <a class="text-zinc-500 hover:text-red-500" href="/delete/<%= user._id%>">Delete User</a>
+                    </div>
+                </div>
+            <% }) %>
+        <% } %>
+        <!-- <div class="user max-w-72 p-4 bg-zinc-800 rounded-lg">
+            <div class="w-full h-52 rounded-lg "> </div>
+            <h3 class="text-xl mt-3 tracking-tighter"> Dhanush</h3>
+            <h5 class="text-zinc-500">dhanushanand.63@gmail.com </h5>
+            <div class="flex flex-direction-column justify-content-center align-items-center gap-3 mt-6"> 
+                <a class="text-zinc-500 hover:text-blue-500">Edit User</a>
+                <a class="text-zinc-500 hover:text-red-500" href="">Delete User</a>
+            </div>
+        </div> -->
+    </div>
+
+</body>
+</html> 
